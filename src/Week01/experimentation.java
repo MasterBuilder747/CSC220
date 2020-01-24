@@ -25,7 +25,7 @@ public class experimentation {
     ArrayList<Integer> al = new ArrayList<Integer>(n);
 
     int[] a = {1, 2, 3, 4, 5};
-
+/*
     for(int i : a) {
         System.out.println(a[i]);
     }
@@ -39,6 +39,6 @@ public class experimentation {
     for(String j : keys) {
         System.out.println(i + " : " + phonebook.get(i));
     }
-
+*/
 
 }

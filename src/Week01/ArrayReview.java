@@ -10,7 +10,7 @@ public class ArrayReview {
 
         //double array
         //assigns default values
-        double[] a1 = new double[2];
+        double[] rate = new double[2];
         double[] a2 = new double[2];
 
         //size is length - 1
