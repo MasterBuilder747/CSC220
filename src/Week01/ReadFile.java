@@ -3,13 +3,25 @@ package Week01;
 import java.util.*;
 import java.io.*;
 
-public class FileRead {
+public class ReadFile {
 
-
-
+    //example usage
     public static void main(String[] args) throws IOException{
 
-        FileReader fr = new FileReader("/Users/Joseph/Desktop/numbers.txt"); //mac does not need to define the disk, uses / instead of \
+        double[] num1 = readFile("/Users/Joseph/Desktop/numbers.txt");
+        double[] num2 = readFile("/Users/Joseph/Desktop/numbers1.txt");
+        System.out.println(Arrays.toString(num1));
+        System.out.println(Arrays.toString(num2));
+
+    }
+
+    //read a collection of numbers in a file given by FileName into an array
+    //returns an array
+    //it is assumed the the first line of the file contains the number of lines in the file
+    //use .txt
+    public static double[] readFile(String fileName) throws IOException {
+
+        FileReader fr = new FileReader(fileName); //mac does not need to define the disk, uses / instead of \
         BufferedReader br = new BufferedReader(fr);
 
         String firstLine = br.readLine();
@@ -39,7 +51,11 @@ public class FileRead {
 
         fr.close();
 
-        System.out.println(Arrays.toString(a));
+        //in main method
+        //System.out.println(Arrays.toString(a));
+
+        return a;
+
     }
 
 }
