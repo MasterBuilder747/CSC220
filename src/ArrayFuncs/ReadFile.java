@@ -1,19 +1,9 @@
-package Week01;
+package ArrayFuncs;
 
 import java.util.*;
 import java.io.*;
 
 public class ReadFile {
-
-    //example usage
-    public static void main(String[] args) throws IOException{
-
-        double[] num1 = readFile("/Users/Joseph/Desktop/numbers.txt");
-        double[] num2 = readFile("/Users/Joseph/Desktop/numbers1.txt");
-        System.out.println(Arrays.toString(num1));
-        System.out.println(Arrays.toString(num2));
-
-    }
 
     //read a collection of numbers in a file given by FileName into an array
     //returns an array
