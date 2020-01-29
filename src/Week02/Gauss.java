@@ -1,4 +1,4 @@
-package Week01;
+package Week02;
 
 public class Gauss {
 

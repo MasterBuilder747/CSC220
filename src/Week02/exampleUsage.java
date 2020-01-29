@@ -1,4 +1,4 @@
-package Week01;
+package Week02;
 
 import java.io.IOException;
 import java.util.Arrays;
@@ -12,9 +12,7 @@ public class exampleUsage {
     public static void main(String[] args) throws IOException {
 
         double[] num1 = readFile("/Users/Joseph/Desktop/numbers.txt");
-        double[] num2 = readFile("/Users/Joseph/Desktop/numbers1.txt");
         System.out.println(Arrays.toString(num1));
-        System.out.println(Arrays.toString(num2));
 
     }
 }
