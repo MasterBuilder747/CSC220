@@ -8,7 +8,7 @@ public class ExpandableArray {
         //b = new array
         double[] b = new double[a.length + 1];
 
-        for(int i = 0; i < a.length + 1; i++) {
+        for(int i = 0; i < a.length; i++) {
             b[i] = a[i];
         }
         return b;

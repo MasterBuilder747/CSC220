@@ -1,5 +1,7 @@
 package Week02;
 
+import ArrayFuncs.ExpandableArray;
+
 import java.io.IOException;
 import java.util.Arrays;
 
@@ -13,6 +15,5 @@ public class exampleUsage {
 
         double[] num1 = readFile("/Users/Joseph/Desktop/numbers.txt");
         System.out.println(Arrays.toString(num1));
-
     }
 }
