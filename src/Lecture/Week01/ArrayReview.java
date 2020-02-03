@@ -1,6 +1,4 @@
-package Week01;
-
-import java.util.Arrays;
+package Lecture.Week01;
 
 public class ArrayReview {
 

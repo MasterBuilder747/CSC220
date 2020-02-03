@@ -1,4 +1,4 @@
-package ArrayFuncs;
+package Lecture.ArrayFuncs;
 
 import java.io.BufferedReader;
 import java.io.FileReader;

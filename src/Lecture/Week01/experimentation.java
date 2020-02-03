@@ -1,7 +1,6 @@
-package Week01;
+package Lecture.Week01;
 
 import java.util.*;
-import java.io.*;
 
 public class experimentation {
 

@@ -1,4 +1,4 @@
-package ArrayFuncs;
+package Lecture.ArrayFuncs;
 
 public class ExpandableArray {
 

@@ -1,4 +1,4 @@
-package Week02;
+package Lecture.Week02;
 
 public class Gauss {
 

@@ -1,12 +1,11 @@
-package Week02;
+package Lecture.Week02;
 
-import ArrayFuncs.ExpandableArray;
+import Lecture.ArrayFuncs.ExpandableArray;
 
 import java.io.IOException;
-import java.util.Arrays;
 
 //special import for custom function
-import static ArrayFuncs.ReadFile.readFile;
+
 
 public class exampleUsage {
 
