@@ -9,8 +9,6 @@ public class HW2 {
         int find(double[] a, double d) – returns the position of d in a, or -1 if d is not in a.
         e.g. if a = [1, 3, 5] then find(a, 3) is 1, and find(a, 9) = -1.
 
-
-
         boolean equal(double[] a, double[] b) – returns true if and only if the array a is equal to the
         array b – i.e. a[0] = b[0], a[1] = b[1], etc.
 
