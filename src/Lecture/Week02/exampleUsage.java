@@ -17,18 +17,24 @@ public class exampleUsage {
 
         //test the time that it takes to process larger loops in this function
 
-        //this is quadratic growth
-        for(int size = 10; size <= 1000000; size *= 10) {
+        //this is quadratic/exponential growth:
+        //for my macbook:
+        //y = 7.0601e0.0922x
+        //R² = 0.999
+
+        //OR: 1/2 N^2
+        for(int size = 10; size <= 100_000; size *= 10) {
             long start = System.currentTimeMillis();
             double[] nums = new double[0];
+            ExpandableArray.count = 0;
             for (int i = 0; i < size; i++) {
                 nums = ExpandableArray.expandArray(nums);
                 nums[i] = i;
+                //ExpandableArray.count++;
             }
             long end = System.currentTimeMillis();
             long timeTaken = end - start;
-            System.out.println(size + " : " + timeTaken);
+            System.out.println(size + ", " + ExpandableArray.count);
         }
-
     }
 }
