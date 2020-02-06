@@ -1,11 +1,8 @@
-package Projects;
+package SideProjects;
 
 import java.io.BufferedReader;
-import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
-
-import java.util.Scanner;
 
 public class MaterialProcessor {
 
@@ -125,7 +122,7 @@ public class MaterialProcessor {
 
             //display the line
             System.out.println(mat.toLowerCase() + ",");
-            /*
+
             System.out.println(mat + ": "
                     + dis(plate, "plate")
                     + dis(dense_plate, "dense_plate")
@@ -142,7 +139,7 @@ public class MaterialProcessor {
                     + dis(fine_wire, "fine_wire")
             );
 
-             */
+
         }
         fr.close();
     }
