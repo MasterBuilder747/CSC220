@@ -37,11 +37,17 @@ public class HW2 {
     e.g. if a = [1, 3, 5] and b = [2, 4] then concat(a, b) = [1, 3, 5, 2, 4].
     */
 
+
+
+
     /*
     double[] delete(double[] a, int i) – returns a new array of size a.length–1 which is the same as
     a but with the i-th element deleted.
     e.g. if a = [1, 2, 5, 7, 9] then delete(a, 3) = [1, 2, 5, 9].
     */
+
+
+
 
     /*
     double[] insert(double[] a, int i, int d) – returns a new array, x, of size a.length+1, with a[0]
@@ -49,6 +55,9 @@ public class HW2 {
     into x[i+1] through x[x.length-1]
     e.g. if a = [1, 2, 5, 7, 9] then insert(a, 3, 22.2) = [1, 2, 5, 22.2, 7, 9]
     */
+
+
+
 
 
     public static void main(String[] args) {

@@ -23,6 +23,7 @@ public class exampleUsage {
         //R² = 0.999
 
         //OR: 1/2 N^2
+        //n ^ 2 is much better than 2 ^ n
         for(int size = 10; size <= 100_000; size *= 10) {
             long start = System.currentTimeMillis();
             double[] nums = new double[0];
