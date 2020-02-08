@@ -61,21 +61,21 @@ public class RecipeBuilder {
 
         while (true) {
 
-            System.out.println("values before processing:");
-            System.out.println("s1: " + s1);
-            System.out.println("s2: " + s2);
-            System.out.println();
+            //System.out.println("values before processing:");
+            //System.out.println("s1: " + s1);
+            //System.out.println("s2: " + s2);
+            //System.out.println();
 
             //s1 is the actual value of the file that is used and printed
             //s2 is the next known line, but it isn't used and isn't printed
             if(s1 == null) {
                 s1 = br.readLine();
-                System.out.println("s1: " + s1);
+                //System.out.println("s1: " + s1);
                 s2 = br.readLine();
-                System.out.println("s2: " + s2);
+                //System.out.println("s2: " + s2);
 
                 genRec(s1, s2);
-                System.out.println("break");
+                //System.out.println("break");
 
             }else{
                 if (s2 == null) {
@@ -103,34 +103,35 @@ public class RecipeBuilder {
         do {
             if (first) {
                 //output the machine recipe first
-                System.out.println("===machine header===");
-                /*
+                //System.out.println("===machine header===");
+
+                System.out.println();
                 System.out.println("recipes.remove(" + s1 + ");");
                 System.out.println("val machine" + mach + " = mods.modularmachinery.RecipeBuilder.newBuilder(\"machine" + mach + "\", \"gt_crafter_lv\", 100);");
                 System.out.println("machine" + mach + ".addEnergyPerTickInput(2000);");
                 System.out.println("machine" + mach + ".addItemOutput(" + s1 + ");");
                 System.out.println("var machine" + mach + "_item = [");
-                */
+
                 first = false;
             } else {
                 //add the items
                 if (!s2.contains("<minecraft:log>")) {
                     //last item
-                    System.out.println("[ item list ]");
-                    /*
+                    //System.out.println("[ item list ]");
+
                     System.out.print("\t" + s1);
                     System.out.println("] as IItemStack[];");
                     System.out.println("for item in machine" + mach +"_item {");
                     System.out.println("\tmachine" + mach + ".addItemInput(item);");
                     System.out.println("}");
                     System.out.println("machine" + mach + ".build();");
-                    */
                     mach++;
                 }else {
                     //all items except last
-                    System.out.println("last item");
+                    //System.out.println("last item");
+                    System.out.println("\t" + s1 + ",");
                     break;
-                    //System.out.print("\t" + s1 + ",");
+
                 }
             }
         } while(s2.contains("<minecraft:log>"));
