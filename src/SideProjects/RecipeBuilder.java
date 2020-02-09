@@ -53,45 +53,63 @@ public class RecipeBuilder {
         */
 
         //save as zs
-        FileReader fr = new FileReader("/Users/Joseph/Desktop/recipes.txt"); //mac does not need to define the disk, uses / instead of \
+        ///Users/Joseph/Desktop/recipes.txt
+        FileReader fr = new FileReader("C:\\Users\\jaath\\Desktop\\recipes.txt"); //mac does not need to define the disk, uses / instead of \
         BufferedReader br = new BufferedReader(fr);
 
+        //s1 is the actual value of the file that is used and printed
+        //s2 is the next known line, but it isn't used and isn't printed
         String s1 = null;
         String s2 = null;
 
         while (true) {
+            //increases after each machine recipe
+            int mach = 0;
 
-            //System.out.println("values before processing:");
-            //System.out.println("s1: " + s1);
-            //System.out.println("s2: " + s2);
-            //System.out.println();
-
-            //s1 is the actual value of the file that is used and printed
-            //s2 is the next known line, but it isn't used and isn't printed
             if(s1 == null) {
+                //first line
                 s1 = br.readLine();
-                //System.out.println("s1: " + s1);
                 s2 = br.readLine();
-                //System.out.println("s2: " + s2);
+                //dispVars(s1, s2, "first");
 
-                genRec(s1, s2);
-                //System.out.println("break");
+                machHead(s1, mach);
 
             }else{
                 if (s2 == null) {
                     break;
                 }else{
                     s1 = s2;
-                    System.out.println("s1: " + s1);
                     s2 = br.readLine();
-                    System.out.println("s2: " + s2);
+                    //dispVars(s1, s2, "item");
 
-                    genRec(s1, s2);
-                    System.out.println("break");
+                    if (s2 == null) {
+                        //genRec(s1, s2);
+                        break;
+                    }
 
                 }
             }
         }
+    }
+
+    public static void dispVars(String s1, String s2, String s) {
+        System.out.println(s);
+        System.out.println("s1: " + s1);
+        System.out.println("s2: " + s2);
+        System.out.println();
+    }
+
+    public static void machHead(String machine, int mach) {
+        //output the machine recipe first
+        //System.out.println("===machine header===");
+
+        System.out.println();
+        System.out.println("recipes.remove(" + machine + ");");
+        System.out.println("val machine" + mach + " = mods.modularmachinery.RecipeBuilder.newBuilder(\"machine" + mach + "\", \"gt_crafter_lv\", 100);");
+        System.out.println("machine" + mach + ".addEnergyPerTickInput(2000);");
+        System.out.println("machine" + mach + ".addItemOutput(" + machine + ");");
+        System.out.println("var machine" + mach + "_item = [");
+
     }
 
     public static void genRec(String s1, String s2) {
@@ -101,19 +119,7 @@ public class RecipeBuilder {
         int mach = 0;
 
         do {
-            if (first) {
-                //output the machine recipe first
-                //System.out.println("===machine header===");
 
-                System.out.println();
-                System.out.println("recipes.remove(" + s1 + ");");
-                System.out.println("val machine" + mach + " = mods.modularmachinery.RecipeBuilder.newBuilder(\"machine" + mach + "\", \"gt_crafter_lv\", 100);");
-                System.out.println("machine" + mach + ".addEnergyPerTickInput(2000);");
-                System.out.println("machine" + mach + ".addItemOutput(" + s1 + ");");
-                System.out.println("var machine" + mach + "_item = [");
-
-                first = false;
-            } else {
                 //add the items
                 if (!s2.contains("<minecraft:log>")) {
                     //last item
@@ -132,7 +138,7 @@ public class RecipeBuilder {
                     System.out.println("\t" + s1 + ",");
                     break;
 
-                }
+
             }
         } while(s2.contains("<minecraft:log>"));
 
