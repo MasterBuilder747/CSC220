@@ -67,33 +67,33 @@ public class RecipeBuilder {
         //s1 is the actual value of the file that is used and printed
         //s2 is the next known line, but it isn't used and isn't printed
 
-
         while (true) {
             //increases after each machine recipe
             int mach = 0;
             String s1 = null;
             String s2 = null;
 
+
+            //executed last
             boolean first = true;
-
-            s1 = br.readLine();
-
             while(true) {
                 if (first) {
-
+                    s1 = br.readLine();
                     s2 = br.readLine();
-
                     //dispVars(s1, s2, "first");
+
                     System.out.println("recipes.remove(" + s1 + ");");
                     System.out.println("val machine" + mach + " = mods.modularmachinery.RecipeBuilder.newBuilder(\"machine" + mach + "\", \"machine\", 100);");
                     System.out.println("machine" + mach + ".addEnergyPerTickInput(2000);");
                     System.out.println("machine" + mach + ".addItemOutput(" + s1 + ");");
                     System.out.println("var machine" + mach + "_item = [");
-                    first = false;
 
+                    first = false;
                 } else {
                     s1 = s2;
                     s2 = br.readLine();
+                    //dispVars(s1, s2, "all others");
+
                     if (!s2.contains("<minecraft:log>")) {
                         //execute recipe
                         System.out.println("\t" + s1 + ",");
@@ -110,7 +110,6 @@ public class RecipeBuilder {
                         s2 = br.readLine();
                         break;
                     }
-                    //dispVars(s1, s2, "all others");
                 }
             }
 
@@ -128,7 +127,7 @@ public class RecipeBuilder {
         System.out.println(s);
         System.out.println("s1: " + s1);
         System.out.println("s2: " + s2);
-        System.out.println();
+        //System.out.println();
     }
 
     public static void genMach(String s1, int mach) {
