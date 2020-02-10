@@ -10,7 +10,10 @@ public class SelectionSort {
     public static int compCount;
 
     //unfortunately this costs the same amount of work regardless of the array (sorted or not)
-    public static void swap (double[] a, int i, int j) {
+
+    //so by swapping multiple times, this can be easier
+    public static void swap(double[] a, int i, int j) {
+        //20 bytes
         swapCount++;
         double x = a[j];
         a[j] = a[i];
@@ -29,9 +32,10 @@ public class SelectionSort {
         return minPos;
     }
 
-    public static void selectionSort (double[] a) {
+    public static void selectionSort(double[] a) {
         int pos = 0;
         while(pos < a.length - 1) {
+            //this line uses 8 bytes
             int minPos = findMinPos(a, pos); //find pos of the smallest element in starting at pos swap a(minPos) and a(pos)*/
             swap(a, minPos, pos);
             pos++;
