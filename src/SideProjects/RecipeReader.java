@@ -52,7 +52,7 @@ public class RecipeReader {
 
             String s = a[0];
             System.out.println("recipes.remove(" + s + ");");
-            System.out.println("val machine" + mach + " = mods.modularmachinery.RecipeBuilder.newBuilder(\"machine" + mach + "\", \"machine\", 100);");
+            System.out.println("val machine" + mach + " = mods.modularmachinery.RecipeBuilder.newBuilder(\"machine" + mach + "\", machine, 100);");
             System.out.println("machine" + mach + ".addEnergyPerTickInput(2000);");
             System.out.println("machine" + mach + ".addItemOutput(" + s + ");");
             System.out.println("var machine" + mach + "_item = [");
