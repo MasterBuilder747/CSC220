@@ -32,7 +32,10 @@ public class RecipeReader {
 
     public static void main(String[] args) throws IOException {
 
-        FileReader fr = new FileReader("C:\\Users\\jaath\\Desktop\\recipes.txt"); //mac does not need to define the disk, uses / instead of \
+        //switch based on platform
+        String mac = "/Users/Joseph/Desktop/recipes.txt";
+        String pc = "C:\\Users\\jaath\\Desktop\\recipes.txt";
+        FileReader fr = new FileReader(mac);
         BufferedReader br = new BufferedReader(fr);
 
         System.out.println("import mods.modularmachinery.RecipeBuilder;\n" +
@@ -44,7 +47,7 @@ public class RecipeReader {
 
         int mach = 0;
         while(true) {
-            //this will throw an exception
+            //this will throw an exception, so its not technically infinite
             String[] a = readFile(br);
 
             String s = a[0];
