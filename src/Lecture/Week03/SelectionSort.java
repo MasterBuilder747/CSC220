@@ -49,11 +49,31 @@ public class SelectionSort {
         return a;
     }
 
+    public static void moveLeft(double[]a, int pos) {
+        int j = pos;
+        while (j != 0 && a[j] < a[j - 1]) {
+            swap(a, j, j - 1);
+            j--;
+        }
+    }
+
+    public static void insertionSort(double[] a) {
+        for(int pos = 1; pos < a.length; pos++) {
+            moveLeft(a, pos);
+        }
+    }
+
     public static void main(String[] args) {
-        double[] a = new double[100_000];
+        double[] a = new double[100_000_000];
         popA(a);
         //System.out.println(Arrays.toString(a));
-        selectionSort(a);
+
+
+        //selectionSort(a);
+        //insertionSort(a);
+
+        //merge sort:
+        //Arrays.sort(a);
         //System.out.println(Arrays.toString(a));
 
     }
