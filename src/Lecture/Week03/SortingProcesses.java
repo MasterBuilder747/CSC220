@@ -4,7 +4,7 @@ import Homework.HW1ArrayReview.HW1ArrayReview;
 
 import java.util.Arrays;
 
-public class SelectionSort {
+public class SortingProcesses {
 
     public static int swapCount;
     public static int compCount;
@@ -64,7 +64,7 @@ public class SelectionSort {
     }
 
     public static void main(String[] args) {
-        double[] a = new double[100_000_000];
+        double[] a = new double[1_000_000];
         popA(a);
         //System.out.println(Arrays.toString(a));
 

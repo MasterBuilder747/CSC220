@@ -45,6 +45,7 @@ public class RecipeReader {
         System.out.println("val machine = \"gt_crafter_lv\";");
         System.out.println();
 
+
         int mach = 0;
         while(true) {
             //this will throw an exception, so its not technically infinite
