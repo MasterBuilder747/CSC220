@@ -61,4 +61,8 @@ public class ExpandableArrayTypes {
         }
 
     }
+
+    public static void main(String[] args) {
+        double[] a = {1, 2, 4, 5};
+    }
 }
