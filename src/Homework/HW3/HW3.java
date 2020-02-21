@@ -2,10 +2,19 @@ package Homework.HW3;
 
 public class HW3 {
 
-    public static int swapCount;
-    public static int compCount;
+    public static long swapCount;
+    public static long compCount;
 
-    //unfortunately this costs the same amount of work regardless of the array (sorted or not)
+    //selection sort
+    public static void selectionSort(double[] a) {
+        int pos = 0;
+        while(pos < a.length - 1) {
+            //this line uses 8 bytes
+            int minPos = findMinPos(a, pos); //find pos of the smallest element in starting at pos swap a(minPos) and a(pos)*/
+            swap(a, minPos, pos);
+            pos++;
+        }
+    }
 
     //so by swapping multiple times, this can be easier
     public static void swap(double[] a, int i, int j) {
@@ -28,27 +37,19 @@ public class HW3 {
         return minPos;
     }
 
-    public static void selectionSort(double[] a) {
-        int pos = 0;
-        while(pos < a.length - 1) {
-            //this line uses 8 bytes
-            int minPos = findMinPos(a, pos); //find pos of the smallest element in starting at pos swap a(minPos) and a(pos)*/
-            swap(a, minPos, pos);
-            pos++;
+    //insertion sort
+    public static void insertionSort(double[] a) {
+        for(int pos = 1; pos < a.length; pos++) {
+            moveLeft(a, pos);
         }
     }
 
-    public static void moveLeft(double[]a, int pos) {
+    //move the item over
+    public static void moveLeft(double[] a, int pos) {
         int j = pos;
         while (j != 0 && a[j] < a[j - 1]) {
             swap(a, j, j - 1);
             j--;
-        }
-    }
-
-    public static void insertionSort(double[] a) {
-        for(int pos = 1; pos < a.length; pos++) {
-            moveLeft(a, pos);
         }
     }
 
@@ -61,18 +62,48 @@ public class HW3 {
         return a;
     }
 
-    public static void main(String[] args) {
-        int n = 1_000_000;
-        createArray(n);
-        //System.out.println(Arrays.toString(a));
-
-        //selectionSort(a);
-        //insertionSort(a);
-
-        //merge sort:
-        //Arrays.sort(a);
-
-        //System.out.println(Arrays.toString(a));
+    //for testing only
+    public static boolean ifSorted(double[] a) {
+        for(int i = 0; i < a.length - 1; i++) {
+            if (a[i] > a[i + 1]) {
+                return false;
+            }
+        }
+        return true;
     }
 
+    public static void main(String[] args) {
+        System.out.println("N, Average selection operations, Average insertion operations");
+        int i = 0;
+        int n = 100 * (int)Math.pow(2,i);
+        while(n < 200_000) {
+
+            //n value
+            System.out.print(n + ", ");
+
+            //selection
+            long sum = 0;
+            for (int j = 0; j < 100; j++) {
+                selectionSort(createArray(n));
+                sum =+ (swapCount + compCount);
+            }
+            double ave = sum / 100.0;
+            System.out.print(ave + ", ");
+
+            swapCount = 0;
+            compCount = 0;
+
+            //insertion
+            sum = 0;
+            for (int j = 0; j < 100; j++) {
+                insertionSort(createArray(n));
+                sum =+ (swapCount + compCount);
+            }
+            ave = sum / 100.0;
+            System.out.println(ave);
+
+            i++;
+            n = 100 * (int)Math.pow(2,i);
+        }
+    }
 }
