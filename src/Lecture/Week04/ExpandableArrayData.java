@@ -14,7 +14,7 @@ public class ExpandableArrayData {
     private int insertPos;
 
     public ExpandableArrayData() {
-        this.array = new double[1];
+        this.array = new double[DEFAULT_ARRAY_CAPACITY];
         this.insertPos = 0;
     }
 
