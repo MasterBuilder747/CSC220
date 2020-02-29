@@ -1,10 +1,16 @@
+/*
+Name: Joseph Audras
+Professor: Graham
+3-2-20
+*/
+
 package Homework.HW4;
 
 public class ExpandableArrayData {
     //each expandable array object has two attributes:
     //an array and an insert position
 
-    //cannot be changed, global to all variables
+    //cannot be changed, global to all objects
     private static final int DEFAULT_ARRAY_CAPACITY = 1;
 
     //  each expandable array data object has two attributes, an array and an insertPos
@@ -41,7 +47,7 @@ public class ExpandableArrayData {
         }
     }
 
-    //  add the value to the "end" of the expandable array ad
+    //  add the value to the "end" of the expandable array d
     public static void add(ExpandableArrayData d, double value) {
         expandIfNecessary(d);
         d.array[d.insertPos] = value;
