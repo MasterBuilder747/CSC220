@@ -7,20 +7,13 @@ Professor: Graham
 package Homework.HW4;
 
 public class ExpandableArrayData {
-    //each expandable array object has two attributes:
-    //an array and an insert position
 
-    //cannot be changed, global to all objects
-    private static final int DEFAULT_ARRAY_CAPACITY = 1;
-
-    //  each expandable array data object has two attributes, an array and an insertPos
-    // one for each object
-    // add static for one for all objects
+    //  each expandable array data object has two attributes, an arry and an insertPos
     private double[] array;
     private int insertPos;
 
     public ExpandableArrayData() {
-        this.array = new double[DEFAULT_ARRAY_CAPACITY];
+        this.array = new double[1];
         this.insertPos = 0;
     }
 
@@ -47,11 +40,15 @@ public class ExpandableArrayData {
         }
     }
 
-    //  add the value to the "end" of the expandable array d
+    //  add the value to the "end" of the expandable array ad
     public static void add(ExpandableArrayData d, double value) {
         expandIfNecessary(d);
         d.array[d.insertPos] = value;
         d.insertPos++;
+    }
+
+    public static void replace(ExpandableArrayData d, double v, int a) {
+        d.array[a] = v;
     }
 
     public static double get(ExpandableArrayData d, int i) {
