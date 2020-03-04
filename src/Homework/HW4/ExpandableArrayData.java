@@ -1,7 +1,8 @@
 /*
 Name: Joseph Audras
 Professor: Graham
-3-2-20
+Date due: 3-2-20
+Class: CSC 220-1
 */
 
 package Homework.HW4;
