@@ -7,7 +7,7 @@ Class: CSC 220-1
 
 package Homework.HW5;
 
-public class MyArrayList {
+public class MyArrayListOld {
 
     //cannot be changed, global to all variables
     private static final int DEFAULT_ARRAY_CAPACITY = 1;
@@ -16,12 +16,12 @@ public class MyArrayList {
     private double[] array;
     private int insertPos;
 
-    public MyArrayList() {
+    public MyArrayListOld() {
         this.array = new double[DEFAULT_ARRAY_CAPACITY];
         this.insertPos = 0;
     }
 
-    public MyArrayList(int initialCapacity) {
+    public MyArrayListOld(int initialCapacity) {
         this.array = new double[initialCapacity];
         this.insertPos = 0;
     }
@@ -58,7 +58,13 @@ public class MyArrayList {
         this.array[this.insertPos] = value;
         this.insertPos++;
     }
-
+/*
+    public static void add(ExpandableArrayData d, double value) {
+        expandifnecessary(d);
+        d.array[d.insertPos] = value;
+        d.insertPos++;
+    }
+*/
     public double get(int i) {
         return this.array[i];
     }
