@@ -67,17 +67,15 @@ public class MyArrayList {
     }
 
     public String toString() {
-        StringBuilder b = new StringBuilder();
-        b.append("[");
+        StringBuilder b = new StringBuilder("[]");
         for (int i = 0; i < this.insertPos - 1; i++) {
-            b.append(this.array[i]);
-            b.append(", ");
+            b.insert(b.indexOf("]"), this.array[i]);
+            b.insert(b.indexOf("]"), ", ");
         }
         //  the array has got something in it
         if (this.insertPos != 0) {
-            b.append(this.array[this.insertPos - 1]);
+            b.insert(b.indexOf("]"), this.array[this.insertPos - 1]);
         }
-        b.append("]");
         return b.toString();
     }
 
