@@ -9,10 +9,10 @@ package Homework.HW5;
 
 public class MyArrayList {
 
-    //cannot be changed, global to all variables
-    private static final int DEFAULT_ARRAY_CAPACITY = 1;
+    //  a variable declaration -- there is only one of these
+    private static int DEFAULT_ARRAY_CAPACITY = 1;
 
-    // each myarraylist object has two attributes: an array and an insertPos
+    //  each expandable array data object has two attributes, an array and an insertPos
     private double[] array;
     private int insertPos;
 
@@ -25,10 +25,6 @@ public class MyArrayList {
         this.array = new double[initialCapacity];
         this.insertPos = 0;
     }
-
-    //1) create a blank object of class MyArrayList
-    //2) call the appropriate constructor
-    //3) result of MyArrayList is a pointer/reference
 
     //  add the value to the "end" of the expandable array given the pair (array, insertPos)
     private void expandIfNecessary() {
@@ -48,13 +44,46 @@ public class MyArrayList {
         }
     }
 
-    //***this only works for non-static functions!***
+    //  delete the element in position pos
+    public void delete(int pos) {
+        for (int i = pos + 1; i < this.insertPos; i++) {
+            this.array[i - 1] = this.array[i];
+        }
+        this.insertPos--;
+    }
 
-    //add the value to the "end" of a MyArrayList object
-    //MyArrayList this is also a parameter that is not shown in this function
+    public void insert(double value, int pos) {
+        this.expandIfNecessary();
+        for (int i = this.insertPos - 1; i >= pos; i--) {
+            this.array[i + 1] = this.array[i];
+        }
+
+        this.array[pos] = value;
+        this.insertPos++;
+    }
+
+    public void addFront(double value) {
+        this.insert( value, 0);
+    }
+
+    public String toString() {
+        StringBuilder b = new StringBuilder();
+        b.append("[");
+        for (int i = 0; i < this.insertPos - 1; i++) {
+            b.append(this.array[i]);
+            b.append(", ");
+        }
+        //  the array has got something in it
+        if (this.insertPos != 0) {
+            b.append(this.array[this.insertPos - 1]);
+        }
+        b.append("]");
+        return b.toString();
+    }
+
+    //  add the value to the "end" of the expandable array ad
     public void add(double value) {
-        //this is the MyArrayList that I want to add
-        expandIfNecessary();
+        this.expandIfNecessary();
         this.array[this.insertPos] = value;
         this.insertPos++;
     }
@@ -66,6 +95,5 @@ public class MyArrayList {
     public int getLength() {
         return this.insertPos;
     }
-
 
 }

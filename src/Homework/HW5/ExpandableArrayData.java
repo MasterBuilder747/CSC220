@@ -27,73 +27,73 @@ public class ExpandableArrayData {
     }
 
     //  add the value to the "end" of the expandable array given the pair (array, insertPos)
-    private static void expandIfNecessary(ExpandableArrayData d) {
+    private void expandIfNecessary() {
 
         //  if the array is full, expand it
-        if (d.array.length == d.insertPos) {
+        if (this.array.length == this.insertPos) {
             //  make a new array K bigger than the old array
-            double[] newArray = new double[d.array.length * 2];
+            double[] newArray = new double[this.array.length * 2];
             //  copy the old array into the new array
-            for (int i = 0; i < d.array.length; i++) {
+            for (int i = 0; i < this.array.length; i++) {
                 //  copy one element from the old array into the new array
-                newArray[i] = d.array[i];
+                newArray[i] = this.array[i];
             }
 
             //  set d's array to be the new array
-            d.array = newArray;
+            this.array = newArray;
         }
     }
 
     //  delete the element in position pos
-    public static void delete(ExpandableArrayData d, int pos) {
-        for (int i = pos + 1; i < d.insertPos; i++) {
-            d.array[i - 1] = d.array[i];
+    public void delete(int pos) {
+        for (int i = pos + 1; i < this.insertPos; i++) {
+            this.array[i - 1] = this.array[i];
         }
-        d.insertPos--;
+        this.insertPos--;
     }
 
-    public static void insert(ExpandableArrayData d, int pos, double value) {
-        expandIfNecessary(d);
-        for (int i = d.insertPos - 1; i >= pos; i--) {
-            d.array[i + 1] = d.array[i];
+    public void insert(int pos, double value) {
+        this.expandIfNecessary();
+        for (int i = this.insertPos - 1; i >= pos; i--) {
+            this.array[i + 1] = this.array[i];
         }
 
-        d.array[pos] = value;
-        d.insertPos++;
+        this.array[pos] = value;
+        this.insertPos++;
     }
 
-    public static void addFront(ExpandableArrayData d, double value) {
-        insert(d, 0, value);
+    public void addFront(double value) {
+        this.insert( 0, value);
     }
 
-    public static String toString(ExpandableArrayData d) {
+    public String toString() {
         StringBuilder b = new StringBuilder();
         b.append("[");
-        for (int i = 0; i < d.insertPos - 1; i++) {
-            b.append(d.array[i]);
+        for (int i = 0; i < this.insertPos - 1; i++) {
+            b.append(this.array[i]);
             b.append(", ");
         }
         //  the array has got something in it
-        if (d.insertPos != 0) {
-            b.append(d.array[d.insertPos - 1]);
+        if (this.insertPos != 0) {
+            b.append(this.array[this.insertPos - 1]);
         }
         b.append("]");
         return b.toString();
     }
 
     //  add the value to the "end" of the expandable array ad
-    public static void add(ExpandableArrayData d, double value) {
-        expandIfNecessary(d);
-        d.array[d.insertPos] = value;
-        d.insertPos++;
+    public void add(double value) {
+        this.expandIfNecessary();
+        this.array[this.insertPos] = value;
+        this.insertPos++;
     }
 
-    public static double get(ExpandableArrayData d, int i) {
-        return d.array[i];
+    public double get(int i) {
+        return this.array[i];
     }
 
-    public static int getLength(ExpandableArrayData d) {
-        return d.insertPos;
+    public int getLength() {
+        return this.insertPos;
     }
 
 }
