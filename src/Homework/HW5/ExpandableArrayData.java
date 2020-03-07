@@ -1,11 +1,18 @@
+/*
+Name: Joseph Audras
+Professor: Graham
+Date due: 3-6-20
+Class: CSC 220-1
+*/
+
 package Homework.HW5;
 
 public class ExpandableArrayData {
 
-    //  a variable decalaration -- there is only one of these
+    //  a variable declaration -- there is only one of these
     private static int DEFAULT_ARRAY_CAPACITY = 1;
 
-    //  each expandable array data object has two attributes, an arry and an insertPos
+    //  each expandable array data object has two attributes, an array and an insertPos
     private double[] array;
     private int insertPos;
 
