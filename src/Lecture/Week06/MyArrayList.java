@@ -26,6 +26,22 @@ public class MyArrayList {
     //3) result of MyArrayList is a pointer/reference
 
     //  add the value to the "end" of the expandable array given the pair (array, insertPos)
+//    private void expandIfNecessary() {
+//
+//        //  if the array is full, expand it
+//        if (this.array.length == this.insertPos) {
+//            //  make a new array K bigger than the old array
+//            double[] newArray = new double[this.array.length * 2];
+//            //  copy the old array into the new array
+//            for (int i = 0; i < this.array.length; i++) {
+//                //  copy one element from the old array into the new array
+//                newArray[i] = this.array[i];
+//            }
+//
+//            //  set d's array to be the new array
+//            this.array = newArray;
+//        }
+//    }
     private void expandIfNecessary() {
 
         //  if the array is full, expand it
@@ -47,8 +63,8 @@ public class MyArrayList {
 
     //add the value to the "end" of a MyArrayList object
     //MyArrayList this is also a parameter that is not shown in this function
-    public void add(double value) {
-        //this is the MyArrayList that I want to add
+    //  add the value to the "end" of a MyArrayList object
+    public void add( double value) {
         expandIfNecessary();
         this.array[this.insertPos] = value;
         this.insertPos++;
