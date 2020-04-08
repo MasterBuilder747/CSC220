@@ -19,6 +19,4 @@ public class ListNode {
         this.value = value;
         this.next = null; //not necessary, for documentation
     }
-
-
 }

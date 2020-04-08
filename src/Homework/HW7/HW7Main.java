@@ -10,10 +10,20 @@ package Homework.HW7;
 public class HW7Main {
 
     public static void main(String[] args) {
-        //assert at least twice per method
 
+        MyLinkedList l = new MyLinkedList();
+        l.addBack(5);
+        l.addFront(4);
 
-        assert true;
+        assert l.size != 0;
+        assert l.get(0) == 4.0;
+        assert l.get(1) == 5.0;
+
+        assert l.toString().contains("]");
+
+        l.set(1, 0);
+        assert l.get(0) == 1.0;
+
 
 
     }
