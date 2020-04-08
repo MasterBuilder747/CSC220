@@ -5,9 +5,9 @@ Date due: 4-8-20
 Class: CSC 220-1
 */
 
-package Homework.HW7;
+package Lecture.Week10;
 
-public class MyLinkedList {
+public class MyLinkedListUpdated {
 
     public void delete(int i) {
         //– deletes the i-th entry of the list.
@@ -40,7 +40,7 @@ public class MyLinkedList {
     //  every MyLinkedList object contains a size attribute
     int size;
 
-    public MyLinkedList() {
+    public MyLinkedListUpdated() {
         this.head = null;
         this.size = 0;
     }
@@ -63,13 +63,36 @@ public class MyLinkedList {
             //	Listnode lastNode = this.last
             //	lastNode.next = newNode;
             this.last = newNode;
+
+//			ListNode current = this.head;
+//			//	stop with current pointing at the last element
+//			while (current.next != null)
+//			{
+//				//	hop to the next node -- so change current to point at the next node
+//				current = current.next;
+//			}
+//
+//			//	current points at the last node in the chain of nodes
+//			ListNode newNode = new ListNode(value);
+//			current.next = newNode;
         }
+
         //	always increase the size no matter whether the list is empty or not
         this.size++;
     }
 
     public int size() {
         return this.size;
+//		ListNode current = this.head;
+//		int count = 0;
+//		while (current != null)
+//		{
+//			//	hop to the next node -- so change current to point at the next node
+//			current = current.next;
+//			count++;
+//		}
+//
+//		return count;
     }
 
     //  add to the front of a linked list pointed to by this
