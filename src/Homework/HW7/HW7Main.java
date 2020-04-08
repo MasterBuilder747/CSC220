@@ -12,7 +12,6 @@ public class HW7Main {
     public static void main(String[] args) {
 
         MyLinkedList l = new MyLinkedList();
-        System.out.println(l.toString());
 
         l.addFront(4);
         l.addBack(5);
@@ -29,8 +28,15 @@ public class HW7Main {
         l.set(6, 2);
 
 
+        MyLinkedList e = new MyLinkedList();
+        e.addFront(0);
+        e.addFront(1);
+        System.out.println(e.toString());
+        e.delete(1);
+        System.out.println(e.toString());
+        System.out.println(e.last.value);
+        //System.out.println(l.toString());
 
-        System.out.println(l.toString());
 
     }
 

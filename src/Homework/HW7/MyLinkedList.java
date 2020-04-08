@@ -21,6 +21,19 @@ public class MyLinkedList {
         return current;
     }
 
+    public void delete() {
+        if (this.size == 1) {
+            //size == 1
+            //delete the only element, value of i doesn't matter
+            //this becomes an empty list
+            this.head = null;
+            this.last = null;
+            this.size--;
+        } else {
+            throw new IllegalArgumentException("The list is not size 1. Provide a position value.");
+        }
+    }
+
     public void delete(int i) {
         //– deletes the i-th entry of the list.
         if (this.head == null) {
@@ -33,31 +46,26 @@ public class MyLinkedList {
             this.head = null;
             this.last = null;
             this.size--;
-        } else if (i > -1) {
+        } else if (i > -1 && i < this.size) {
             //size == 2+
             if (i == 0) {
                 //sets the head to the second node
-                this.head = hop(this.head, 2);
+                this.head = hop(this.head, 1);
             } else if (i == this.size - 1) {
                 //the (i-1)th node is now the last element
                 ListNode previousI = hop(this.head, i - 1);
                 previousI.next = null;
                 this.last = previousI;
             } else {
+                //middle deletion
                 //jump to i-1
                 ListNode previousI = hop(this.head, i - 1);
-                //make the previousI (i-1) point to nextI (i+1), which will 'skip' and delete the i node
-                //hop 2x up
-                //if ()
-                    previousI.next = hop(previousI, 2);
-
-
-                //this.last = ?;
-
+                //make the previousI (i-1) node point to nextI (i+1), which will 'skip' and delete the i node
+                previousI.next = hop(previousI, 2);
             }
             this.size--;
         } else {
-            throw new IllegalArgumentException("i must be greater than -1.");
+            throw new IllegalArgumentException("i must be greater than -1 and smaller than or equal to size.");
         }
     }
 
