@@ -27,17 +27,39 @@ public class HW7Main {
         assert l.get(2) == 1.0;
         l.set(6, 2);
 
+        //delete
+        MyLinkedList d = new MyLinkedList();
 
-        MyLinkedList e = new MyLinkedList();
-        e.addFront(0);
-        e.addFront(1);
-        System.out.println(e.toString());
-        e.delete(1);
-        System.out.println(e.toString());
-        System.out.println(e.last.value);
-        //System.out.println(l.toString());
+        d.addBack(1);
+        d.delete();
+        assert d.size == 0;
+        assert d.last == null;
 
+        d.addBack(1);
+        d.addBack(2);
+        d.delete(1);
+        assert d.get(0) == 1;
+        assert d.last.value == 1;
 
+        //1, 2, 3
+        d.addBack(2);
+        d.addBack(3);
+        d.delete(1);
+        assert d.get(0) == 1;
+        assert d.get(1) == 3;
+        assert d.last.value == 3;
+
+        //insert
+        MyLinkedList i = new MyLinkedList();
+        //addFront
+        i.insert(1, 0);
+        assert i.head.value == 1;
+        //addBack
+        i.insert(2, 1);
+        assert i.last.value == 2;
+        //addMiddle
+        i.insert(1.5, 1);
+        assert i.get(1) == 1.5;
     }
 
 }

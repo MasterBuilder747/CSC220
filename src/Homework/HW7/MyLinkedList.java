@@ -69,19 +69,30 @@ public class MyLinkedList {
         }
     }
 
-    public void addMiddle(double value, int i) {
+    public void insert(double value, int i) {
         //– add a new element to the i-th position of the list. Aka insert
-        if (i > -1) {
-            ListNode current = hop(this.head, i);
-            double tp = current.value;
-            current.value = value;
-            for (int x = i; x < this.size; x++) {
+        ListNode node = new ListNode(value);
 
-            }
-
+        if (this.head == null) {
+            //size == 0
+            this.head = node;
+            this.last = node;
+            this.size++;
+        } else if (i == 0) {
+            this.addFront(value);
+        } else if (i == this.size) {
+            this.addBack(value);
+        } else if (i > -1 && i < this.size) {
+            //size == 2+
+            //the (i-1)th node is now the last element
+            ListNode previousI = hop(this.head, i - 1);
+            ListNode nextI = previousI.next; //i+1, but i hasn't been inserted yet
+            //insert the i node
+            previousI.next = node;
+            node.next = nextI;
             this.size++;
         } else {
-            throw new IllegalArgumentException("i must be greater than -1.");
+            throw new IllegalArgumentException("i must be greater than -1 and smaller than or equal to size.");
         }
     }
 
