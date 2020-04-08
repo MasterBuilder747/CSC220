@@ -11,27 +11,80 @@ import java.lang.StringBuilder;
 
 public class MyLinkedList {
 
+    //don't hop the first time
+    private ListNode hop(ListNode current, int i) {
+        if (i > 0) {
+            for (int x = 0; x < i; x++) {
+                current = current.next;
+            }
+        }
+        return current;
+    }
+
     public void delete(int i) {
         //– deletes the i-th entry of the list.
+        if (this.head == null) {
+            //size == 0
+            throw new IllegalArgumentException("The list cannot be empty.");
+        } else if (this.size == 1) {
+            //size == 1
+            //delete the only element, value of i doesn't matter
+            //this becomes an empty list
+            this.head = null;
+            this.last = null;
+            this.size--;
+        } else if (i > -1) {
+            //size == 2+
+            if (i == 0) {
+                //sets the head to the second node
+                this.head = hop(this.head, 2);
+            } else if (i == this.size - 1) {
+                //the (i-1)th node is now the last element
+                ListNode previousI = hop(this.head, i - 1);
+                previousI.next = null;
+                this.last = previousI;
+            } else {
+                //jump to i-1
+                ListNode previousI = hop(this.head, i - 1);
+                //make the previousI (i-1) point to nextI (i+1), which will 'skip' and delete the i node
+                //hop 2x up
+                //if ()
+                    previousI.next = hop(previousI, 2);
 
+
+                //this.last = ?;
+
+            }
+            this.size--;
+        } else {
+            throw new IllegalArgumentException("i must be greater than -1.");
+        }
     }
 
     public void addMiddle(double value, int i) {
-        //– add a new element to the i-th position of the list.
+        //– add a new element to the i-th position of the list. Aka insert
+        if (i > -1) {
+            ListNode current = hop(this.head, i);
+            double tp = current.value;
+            current.value = value;
+            for (int x = i; x < this.size; x++) {
 
+            }
+
+            this.size++;
+        } else {
+            throw new IllegalArgumentException("i must be greater than -1.");
+        }
     }
 
     public void set(double value, int i) {
         //– changes the i-th position of the list to the new element.
-        if (i > -1) {
-            ListNode current = this.head;
-            //don't hop the first time
-            for (int x = 0; x < i; x++) {
-                current = current.next;
-            }
-            current.value = value;
+        if (this.head == null) {
+            throw new IllegalArgumentException("The list cannot be empty.");
+        } else if (i > -1 && i < this.size) {
+            hop(this.head, i).value = value;
         } else {
-            throw new IllegalArgumentException("i must be greater than -1.");
+            throw new IllegalArgumentException("i must be greater than -1 and smaller than the size.");
         }
     }
 
@@ -47,7 +100,9 @@ public class MyLinkedList {
             sb.append(", ");
             current = current.next;
         }
-        sb.append(current.value);
+        if (this.head != null) {
+            sb.append(current.value);
+        }
         sb.append("]");
 
         return sb.toString();

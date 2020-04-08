@@ -12,8 +12,10 @@ public class HW7Main {
     public static void main(String[] args) {
 
         MyLinkedList l = new MyLinkedList();
-        l.addBack(5);
+        System.out.println(l.toString());
+
         l.addFront(4);
+        l.addBack(5);
 
         assert l.size != 0;
         assert l.get(0) == 4.0;
@@ -21,10 +23,14 @@ public class HW7Main {
 
         assert l.toString().contains("]");
 
-        l.set(1, 0);
-        assert l.get(0) == 1.0;
+        l.addFront(8);
+        l.set(1, 2);
+        assert l.get(2) == 1.0;
+        l.set(6, 2);
 
 
+
+        System.out.println(l.toString());
 
     }
 
