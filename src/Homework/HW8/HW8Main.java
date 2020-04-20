@@ -82,18 +82,56 @@ public class HW8Main {
         assert addIt(ll2) == 0;
 
         Timer t = new Timer();
-        t.start();
-        int sum = 0;
-        for (int i = 0; i < 100000000; i++) {
-            sum += 10015;
-        }
-        System.out.println(t.stop());
 
+        //data collection
         //Q3: plot Q1
-
+        long[][] data3 = new long[10][3];
+        int count3 = 0;
+        for (int i = 0; i < 100_000_000; i+=10_000_000) {
+            ArrayList<Integer> a = new ArrayList<>();
+            for (int j = 0; j < i; j++) {
+                a.add(j);
+            }
+            System.out.println("added size " + i);
+            t.start();
+            addFor(a);
+            data3[count3][0] = t.stop();
+            t.start();
+            addForeach(a);
+            data3[count3][1] = t.stop();
+            t.start();
+            addIt(a);
+            data3[count3][2] = t.stop();
+            count3++;
+        }
+        System.out.println("ArrayList: ");
+        for (int i = 0; i < 10; i++) {
+            System.out.println(Arrays.toString(data3[i]));
+        }
 
         //Q4: plot Q2
-
+        long[][] data4 = new long[10][3];
+        int count4 = 0;
+        for (int i = 0; i < 100_000; i+=10_000) {
+            LinkedList<Integer> a = new LinkedList<>();
+            for (int j = 0; j < i; j++) {
+                a.add(j);
+            }
+            System.out.println("added size " + i);
+            t.start();
+            addFor(a);
+            data4[count4][0] = t.stop();
+            t.start();
+            addForeach(a);
+            data4[count4][1] = t.stop();
+            t.start();
+            addIt(a);
+            data4[count4][2] = t.stop();
+            count4++;
+        }
+        System.out.println("LinkedList: ");
+        for (int i = 0; i < 10; i++) {
+            System.out.println(Arrays.toString(data4[i]));
+        }
     }
-
 }
