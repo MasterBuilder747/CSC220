@@ -11,33 +11,31 @@ import java.util.ArrayList;
 import java.util.Iterator;
 
 public class Main {
-/*
-    // create a list of 4 strings
-    ArrayList<String> L = new ArrayList<>();
-L.add("Facebook");
-L.add("Paypal");
-L.add("Google");
-L.add("Yahoo");
-// loop/iterate over the list using a simple for loop
-System.out.println("Simple for loop");
-for (int i = 0; i < L.size(); i++)
-    {
-        String x = L.get(i);
-        System.out.println(x);
+
+    public static int addFor(ArrayList<Integer> al) {
+        int sum = 0;
+        for (int i = 0; i < al.size(); i++) {
+            sum += al.get(i);
+        }
+        return sum;
     }
-// loop/iterate over the list using a foreach loop
-System.out.println("Foreach loop");
-for (String x : L)
-    {
-        System.out.println(x);
+
+    public static int addForeach(ArrayList<Integer> al) {
+        int sum = 0;
+        return sum;
     }
-// loop/iterate over the list using an iterator
-System.out.println("Iterator based loop");
-    Iterator<String> it = L.iterator();
-while (it.hasNext())
-    {
-        String x = it.next();
-        System.out.println(x);
+
+    public static int addIt(ArrayList<Integer> al) {
+        int sum = 0;
+        return sum;
     }
-*/
+
+    public static void main(String[] args) {
+        ArrayList<Integer> al = new ArrayList<>();
+        for (int i = 0; i < 10; i++) {
+            al.add(i);
+        }
+        System.out.println("For loop: " + addFor(al));
+    }
+
 }
