@@ -7,11 +7,9 @@ Class: CSC 220-1
 
 package Homework.HW8;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.LinkedList;
+import java.util.*;
 
-public class Main {
+public class HW8Main {
 
     //Q1: ArrayList
     public static int addFor(ArrayList<Integer> al) {
@@ -37,24 +35,25 @@ public class Main {
     }
 
     //Q2: LinkedList
-    public static int addFor(LinkedList<Integer> al) {
+    public static int addFor(LinkedList<Integer> ll) {
         int sum = 0;
-        for (int i = 0; i < al.size(); i++) {
-            sum += al.get(i);
+        for (int i = 0; i < ll.size(); i++) {
+            sum += ll.get(i);
         }
         return sum;
     }
-    public static int addForeach(LinkedList<Integer> al) {
+    public static int addForeach(LinkedList<Integer> ll) {
         int sum = 0;
-        for (int i : al) {
-            sum += al.get(i);
+        for (int i : ll) {
+            sum += ll.get(i);
         }
         return sum;
     }
-    public static int addIt(LinkedList<Integer> al) {
+    public static int addIt(LinkedList<Integer> ll) {
         int sum = 0;
-        for (Iterator<Integer> itr=al.iterator(); itr.hasNext();) {
-            sum += itr.next();
+        Iterator<Integer> it = ll.iterator();
+        while (it.hasNext()) {
+            sum += it.next();
         }
         return sum;
     }
@@ -82,11 +81,18 @@ public class Main {
         assert addIt(ll) == 45;
         assert addIt(ll2) == 0;
 
+        Timer t = new Timer();
+        t.start();
+        int sum = 0;
+        for (int i = 0; i < 100000000; i++) {
+            sum += 10015;
+        }
+        System.out.println(t.stop());
+
         //Q3: plot Q1
 
 
         //Q4: plot Q2
-
 
     }
 
