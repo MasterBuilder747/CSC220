@@ -7,7 +7,7 @@ Class: CSC 220-1
 
 package Homework.HW9;
 
-//	a binary seach tree (BST) with keys of type K and values of type V
+//	a binary search tree (BST) with keys of type K and values of type V
 //	a BST stores key-value pairs
 //	the keys must be orderable (that's what extends Comparable<K> says)
 //	K extends Comparable<K> guarantees that objects of type K have a compareTo method
