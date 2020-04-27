@@ -9,22 +9,25 @@ package Homework.HW9;
 
 public class HW9Main {
 
-    public static BST createBST(int N) {
-        BST b = new BST<Double, Integer>();
+    public static BST<Double, Integer> random(int N) {
+        BST<Double, Integer> b = new BST<>();
         if (N > 0) {
             for (int i = 0; i < N; i++) {
-                b.put(i, Math.random());
+                //key = 1, value = rand
+                b.put(Math.random(), 1);
             }
         }
         return b;
     }
 
     public static void main(String[] args) {
-        BST b = createBST(10);
-        int size = b.getSize();
-        for (int i = 0; i < size; i++){
-            System.out.println(b.get(i));
-        }
+        // Q1
+        int tst = (int)(Math.random() * 10);
+        BST<Double, Integer> b = random(tst);
+        assert b.getSize() == tst;
+
+        // Q2
+
     }
 
 }

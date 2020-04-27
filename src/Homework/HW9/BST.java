@@ -25,8 +25,7 @@ public class BST<K extends Comparable<K>, V> implements IMap<K, V> {
     //	add a key-value pair to the BST
     public void put(K key, V value) {
         //	if the tree is empty make a node as the root
-        if (this.root == null)
-        {
+        if (this.root == null) {
             this.root = new TreeNode<>(key, value);
             this.size++;
         } else {
