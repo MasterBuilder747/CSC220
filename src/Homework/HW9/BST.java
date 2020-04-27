@@ -118,8 +118,7 @@ public class BST<K extends Comparable<K>, V> implements IMap<K, V> {
         return getDepthR(root) - 1;
     }
 
-    private int getDepthR(TreeNode<K, V> current)
-    {
+    private int getDepthR(TreeNode<K, V> current) {
         if (current == null) {
             return 0;
         } else {
@@ -127,5 +126,17 @@ public class BST<K extends Comparable<K>, V> implements IMap<K, V> {
             int leftR = getDepthR(current.right);
             return 1 + Math.max(leftD, leftR);
         }
+    }
+
+    private double getTD(TreeNode<K, V> b, double depth) {
+        if (b == null) {
+            return 0;
+        } else {
+            return depth + getTD(b.left, depth + 1) + getTD(b.right, depth + 1);
+        }
+    }
+
+    public double getTotDepth() {
+        return this.getTD(this.root, 0);
     }
 }
