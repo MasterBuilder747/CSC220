@@ -32,6 +32,7 @@ public class HW10Main {
     }
 
     public static void main(String[] args) {
+        /*
         // Q1
         MyHashMap<Double, Integer> map1 = new MyHashMap<>(10);
         for (int i = 0; i < 100; i++) {
@@ -56,13 +57,31 @@ public class HW10Main {
         generateKeys(map2, 10_000);
         generateKeys(map2, 100_000);
         System.out.println();
-
+        */
         //Q3
         MyHashMap<Double, Integer> map3 = new MyHashMap<>(10);
-        generateKeysResize(map3, 1_000_000);
-        generateKeysResize(map3, 10_000_000);
+        for (int i = 0; i < 100; i++) {
+            map3.put(i * 1.0, 1);
+        }
+        map3.put(1.0, 1);
+
+        assert map3.containsKey(0.0);
+        assert map3.containsKey(1.0);
+        assert !map3.containsKey(100.0);
+
+        map3.delete(0.0);
+        assert !map3.containsKey(0.0);
+        map3.put(0.0, 1);
+        assert map3.containsKey(0.0);
 
         //Q4
+        MyHashMap<Double, Integer> map4 = new MyHashMap<>(10);
+        generateKeysResize(map4, 100);
+        generateKeysResize(map4, 1_000);
+        generateKeysResize(map4, 10_000);
+        generateKeysResize(map4, 100_000);
+        generateKeysResize(map4, 1_000_000);
+        generateKeysResize(map4, 10_000_000);
 
     }
 
