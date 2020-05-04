@@ -40,21 +40,23 @@ public class MyHashMap<K, V> implements IMap<K, V> {
     public boolean containsKey(K key) {
         int b = chooseBucket(key);
         for (KVP<K, V> pair : this.bucket[b]) {
-            if (pair.key.equals(key)) {
-                return true;
+            if (pair.key != null) {
+                if (pair.key.equals(key)) {
+                    return true;
+                }
             }
         }
         return false;
     }
 
     public void delete(K key) {
-        resizeIfNecessary();
         //	given the key, somehow choose a bucket, and then put into that bucket
         int b = chooseBucket(key);
         for (KVP<K, V> pair : this.bucket[b]) {
             if (pair.key.equals(key)) {
-                pair.key = null;
+                this.bucket[b].remove(pair);
                 this.size--;
+                resizeIfNecessary();
                 return;
             }
         }
