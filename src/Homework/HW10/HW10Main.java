@@ -10,7 +10,17 @@ package Homework.HW10;
 public class HW10Main {
 
     public static void main(String[] args) {
+        MyHashMap<Double, Integer> map1 = new MyHashMap<>(100);
+        for (int i = 0; i < 100; i++) {
+            map1.put(i * 1.0, 1);
+        }
+        map1.put(1.0, 1);
 
-    }
+        assert map1.containsKey(0.0);
+        assert map1.containsKey(1.0);
+        assert !map1.containsKey(100.0);
+
+
+     }
 
 }

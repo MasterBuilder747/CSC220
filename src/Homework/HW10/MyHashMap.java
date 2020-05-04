@@ -17,13 +17,16 @@ public class MyHashMap<K, V> implements IMap<K, V> {
     //	we can have as many buckets as we like
     //	if we have N kvps each bucket on average has size N/(number of buckets)
     //	number of buckets is usually called M, so average bucket length is N/M
+
+    //  this is an array of arraylists of KVPs
     public ArrayList<KVP<K, V>>[] bucket;
     private int size;
 
     //	M is the number of buckets
     public MyHashMap(int M) {
+        //  casting to show how this is initialized
         this.bucket = (ArrayList<KVP<K, V>>[]) new ArrayList[M];
-        //	make each bucket the empty list
+        //  make each bucket the empty list
         for (int i = 0; i < this.bucket.length; i++) {
             bucket[i] = new ArrayList<>();
         }
@@ -35,11 +38,26 @@ public class MyHashMap<K, V> implements IMap<K, V> {
     }
 
     public boolean containsKey(K key) {
-        return true;
+        int b = chooseBucket(key);
+        for (KVP<K, V> pair : this.bucket[b]) {
+            if (pair.key.equals(key)) {
+                return true;
+            }
+        }
+        return false;
     }
 
     public void delete(K key) {
-
+        resizeIfNecessary();
+        //	given the key, somehow choose a bucket, and then put into that bucket
+        int b = chooseBucket(key);
+        for (KVP<K, V> pair : this.bucket[b]) {
+            if (pair.key.equals(key)) {
+                pair.key = null;
+                this.size--;
+                return;
+            }
+        }
     }
 
     //	choose bucket quickly but also uniformly (so every bucket has the
@@ -64,20 +82,17 @@ public class MyHashMap<K, V> implements IMap<K, V> {
     //	or M is at least 1/2 N
     //	NOTE: this code is currently WRONG
     private void resizeIfNecessary() {
-        if (this.size >= 2 * this.bucket.length)
-        {
-            System.out.println("RESIZING");
+        if (this.size >= 2 * this.bucket.length) {
+            //System.out.println("RESIZING");
             //	add buckets
             //	make a bucket array that is twice as large
             ArrayList<KVP<K, V>>[] newBucket = (ArrayList<KVP<K, V>>[]) new ArrayList[2 * this.bucket.length];
             //	copy the old bucket array into the new bucket array
-            for (int i = 0; i < this.bucket.length; i++)
-            {
+            for (int i = 0; i < this.bucket.length; i++) {
                 newBucket[i] = this.bucket[i];
             }
             //	full up the new spots in newBucket with empty lists
-            for (int i = this.bucket.length; i < newBucket.length; i++)
-            {
+            for (int i = this.bucket.length; i < newBucket.length; i++) {
                 newBucket[i] = new ArrayList<>();
             }
             this.bucket = newBucket;
@@ -110,8 +125,7 @@ public class MyHashMap<K, V> implements IMap<K, V> {
         int b = chooseBucket(key);
         //	scan the b-th bucket looking for a KVP whose key = the key we are looking for
         for (KVP<K, V> pair : this.bucket[b]) {
-            if (pair.key.equals(key))
-            {
+            if (pair.key.equals(key)) {
                 return pair.value;
             }
         }
