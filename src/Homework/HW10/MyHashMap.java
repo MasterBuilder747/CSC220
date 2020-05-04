@@ -50,7 +50,6 @@ public class MyHashMap<K, V> implements IMap<K, V> {
     }
 
     public void delete(K key) {
-        //	given the key, somehow choose a bucket, and then put into that bucket
         int b = chooseBucket(key);
         for (KVP<K, V> pair : this.bucket[b]) {
             if (pair.key.equals(key)) {
@@ -60,6 +59,42 @@ public class MyHashMap<K, V> implements IMap<K, V> {
                 return;
             }
         }
+    }
+
+    public void printSizes() {
+        for (int i = 0; i < this.bucket.length; i++) {
+            System.out.println(this.bucket[i].size());
+        }
+    }
+
+    public double ave() {
+        int sum = 0;
+        for (int i = 0; i < this.bucket.length; i++) {
+            sum += this.bucket[i].size();
+        }
+        return sum * 1.0 / this.bucket.length * 1.0;
+    }
+
+    public int getMax() {
+       int max = 0;
+       for (int i = 0; i < this.bucket.length; i++) {
+           int size = this.bucket[i].size();
+           if (max < size) {
+               max = size;
+           }
+       }
+       return max;
+    }
+
+    public int getMin() {
+        int min = this.bucket[0].size();
+        for (int i = 1; i < this.bucket.length; i++) {
+            int size = this.bucket[i].size();
+            if (min > size) {
+                min = size;
+            }
+        }
+        return min;
     }
 
     //	choose bucket quickly but also uniformly (so every bucket has the
@@ -99,6 +134,24 @@ public class MyHashMap<K, V> implements IMap<K, V> {
             }
             this.bucket = newBucket;
         }
+    }
+
+    public void putNoResize(K key, V value) {
+        //	given the key, somehow choose a bucket, and then put into that bucket
+        int b = chooseBucket(key);
+        for (KVP<K, V> pair : this.bucket[b]) {
+            if (pair.key.equals(key)) {
+                //	change the value in the KVP for the key
+                pair.value = value;
+                return;
+            }
+        }
+
+        //	if we get here the key wasn't in the store, so add a pair to the
+        //	end of the b-th bucket
+        KVP<K, V> pair = new KVP<>(key, value);
+        this.bucket[b].add(pair);
+        this.size++;
     }
 
     //	adds a key-value pair to the key-value store pointed to by this
